@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { dbSequelize } from "./config/database.js";
 import authRoutes from "./routes/authRoutes.js";
+import bookRoutes from "./routes/bookRoutes.js";
 import protectedRoutes from "./middleware/protectedRoutes.js";
 dotenv.config();
 
@@ -14,6 +15,9 @@ const PORT = process.env.PORT || 5000;
 
 // Public routes (no token required)
 app.use("/api/auth", authRoutes);
+
+// Book routes
+app.use("/api/books", bookRoutes);
 
 // Protected routes (token required)
 app.get("/api/me", protectedRoutes, (req, res) => {
