@@ -55,6 +55,11 @@ export const issueBook = async (req, res) => {
         .status(404)
         .json({ success: false, message: "Member not found." });
     }
+    if (!member.isActive) {
+      return res
+        .status(403)
+        .json({ success: false, message: "Cannot issue book to a deactivated member." });
+    }
 
     const existingLoan = await Loan.findOne({
       where: { bookId, memberId, status: "borrowed" },

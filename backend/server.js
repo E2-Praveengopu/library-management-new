@@ -5,6 +5,8 @@ import { dbSequelize } from "./config/database.js";
 import authRoutes from "./routes/authRoutes.js";
 import bookRoutes from "./routes/bookRoutes.js";
 import loanRoutes from "./routes/loanRoutes.js";
+import memberRoutes from "./routes/memberRoutes.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
 import protectedRoutes from "./middleware/protectedRoutes.js";
 dotenv.config();
 
@@ -22,6 +24,12 @@ app.use("/api/books", bookRoutes);
 
 // Loan routes
 app.use("/api/loans", loanRoutes);
+
+// Member routes
+app.use("/api/members", memberRoutes);
+
+// Dashboard routes
+app.use("/api/dashboard", dashboardRoutes);
 
 // Protected routes (token required)
 app.get("/api/me", protectedRoutes, (req, res) => {

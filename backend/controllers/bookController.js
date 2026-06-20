@@ -8,25 +8,46 @@ export const addBook = async (req, res) => {
     });
   }
 
-  const { title, author, isbn, genre, totalCopies, availableCopies, coverImageUrl } = req.body;
+  const {
+    title,
+    author,
+    isbn,
+    genre,
+    totalCopies,
+    availableCopies,
+    coverImageUrl,
+  } = req.body;
 
   if (!title) {
-    return res.status(400).json({ success: false, message: "Title is required." });
+    return res
+      .status(400)
+      .json({ success: false, message: "Title is required." });
   }
   if (!author) {
-    return res.status(400).json({ success: false, message: "Author is required." });
+    return res
+      .status(400)
+      .json({ success: false, message: "Author is required." });
   }
   if (!isbn) {
-    return res.status(400).json({ success: false, message: "ISBN is required." });
+    return res
+      .status(400)
+      .json({ success: false, message: "ISBN is required." });
   }
   if (!totalCopies) {
-    return res.status(400).json({ success: false, message: "Total copies is required." });
+    return res
+      .status(400)
+      .json({ success: false, message: "Total copies is required." });
   }
 
   try {
     const existingBook = await Book.findOne({ where: { isbn } });
     if (existingBook) {
-      return res.status(400).json({ success: false, message: "A book with this ISBN already exists." });
+      return res
+        .status(400)
+        .json({
+          success: false,
+          message: "A book with this ISBN already exists.",
+        });
     }
 
     const book = await Book.create({
@@ -35,7 +56,8 @@ export const addBook = async (req, res) => {
       isbn,
       genre: genre || null,
       totalCopies,
-      availableCopies: availableCopies !== undefined ? availableCopies : totalCopies,
+      availableCopies:
+        availableCopies !== undefined ? availableCopies : totalCopies,
       coverImageUrl: coverImageUrl || null,
     });
 
@@ -89,7 +111,9 @@ export const getBookById = async (req, res) => {
   try {
     const book = await Book.findByPk(id);
     if (!book) {
-      return res.status(404).json({ success: false, message: "Book not found." });
+      return res
+        .status(404)
+        .json({ success: false, message: "Book not found." });
     }
 
     return res.status(200).json({
@@ -112,18 +136,33 @@ export const updateBook = async (req, res) => {
   }
 
   const { id } = req.params;
-  const { title, author, isbn, genre, totalCopies, availableCopies, coverImageUrl } = req.body;
+  const {
+    title,
+    author,
+    isbn,
+    genre,
+    totalCopies,
+    availableCopies,
+    coverImageUrl,
+  } = req.body;
 
   try {
     const book = await Book.findByPk(id);
     if (!book) {
-      return res.status(404).json({ success: false, message: "Book not found." });
+      return res
+        .status(404)
+        .json({ success: false, message: "Book not found." });
     }
 
     if (isbn && isbn !== book.isbn) {
       const existingBook = await Book.findOne({ where: { isbn } });
       if (existingBook) {
-        return res.status(400).json({ success: false, message: "A book with this ISBN already exists." });
+        return res
+          .status(400)
+          .json({
+            success: false,
+            message: "A book with this ISBN already exists.",
+          });
       }
     }
 
@@ -133,8 +172,10 @@ export const updateBook = async (req, res) => {
       isbn: isbn || book.isbn,
       genre: genre !== undefined ? genre : book.genre,
       totalCopies: totalCopies !== undefined ? totalCopies : book.totalCopies,
-      availableCopies: availableCopies !== undefined ? availableCopies : book.availableCopies,
-      coverImageUrl: coverImageUrl !== undefined ? coverImageUrl : book.coverImageUrl,
+      availableCopies:
+        availableCopies !== undefined ? availableCopies : book.availableCopies,
+      coverImageUrl:
+        coverImageUrl !== undefined ? coverImageUrl : book.coverImageUrl,
     });
 
     return res.status(200).json({
@@ -161,7 +202,9 @@ export const deleteBook = async (req, res) => {
   try {
     const book = await Book.findByPk(id);
     if (!book) {
-      return res.status(404).json({ success: false, message: "Book not found." });
+      return res
+        .status(404)
+        .json({ success: false, message: "Book not found." });
     }
 
     await book.destroy();
