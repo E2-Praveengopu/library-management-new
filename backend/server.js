@@ -4,6 +4,7 @@ import cors from "cors";
 import { dbSequelize } from "./config/database.js";
 import authRoutes from "./routes/authRoutes.js";
 import bookRoutes from "./routes/bookRoutes.js";
+import loanRoutes from "./routes/loanRoutes.js";
 import protectedRoutes from "./middleware/protectedRoutes.js";
 dotenv.config();
 
@@ -19,6 +20,9 @@ app.use("/api/auth", authRoutes);
 // Book routes
 app.use("/api/books", bookRoutes);
 
+// Loan routes
+app.use("/api/loans", loanRoutes);
+
 // Protected routes (token required)
 app.get("/api/me", protectedRoutes, (req, res) => {
     res.status(200).json({
@@ -33,8 +37,8 @@ app.get("/api/me", protectedRoutes, (req, res) => {
 try {
   await dbSequelize.authenticate();
   console.log('Connection has been established successfully.');
-  
-  console.log('All tables dropped and recreated.');
+  await dbSequelize.sync({ alter: true });
+  console.log('All models synced.');
 } catch (error) {
   console.error('Unable to connect to the database:', error);
 }
