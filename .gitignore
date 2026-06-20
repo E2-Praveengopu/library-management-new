@@ -1,0 +1,75 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+coverage/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Cache
+.cache/
+.parcel-cache/
+.eslintcache
+
+# TypeScript
+*.tsbuildinfo
+
+# Python (if backend is Python)
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+
+# Java (if backend is Spring Boot)
+target/
+*.class
+
+# Maven
+.mvn/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle/
+
+# Database files
+*.sqlite
+*.db
+
+# Test reports
+coverage/
+test-results/
+
+# Docker
+.docker/
+
+# Temporary files
+tmp/
+temp/

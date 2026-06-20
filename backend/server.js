@@ -1,0 +1,42 @@
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import { dbSequelize } from "./config/database.js";
+import authRoutes from "./routes/authRoutes.js";
+import protectedRoutes from "./middleware/protectedRoutes.js";
+dotenv.config();
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const PORT = process.env.PORT || 5000;
+
+// Public routes (no token required)
+app.use("/api/auth", authRoutes);
+
+// Protected routes (token required)
+app.get("/api/me", protectedRoutes, (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: "You are authenticated",
+        data: {
+            user: req.user,
+        },
+    });
+});
+
+try {
+  await dbSequelize.authenticate();
+  console.log('Connection has been established successfully.');
+  
+  console.log('All tables dropped and recreated.');
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+}
+
+
+
+app.listen(PORT,()=>{
+    console.log(`server listening to the port ${PORT}`);
+});
