@@ -23,7 +23,7 @@
 }
 
 .signup-title {
-  color: #007bff;
+  color: #F62440;
   font-size: 26px;
   margin: 0 0 6px 0;
 }
@@ -66,7 +66,7 @@
 
 .signup-button {
   padding: 12px;
-  background: #007bff;
+  background: #F62440;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -78,7 +78,7 @@
 }
 
 .signup-button:disabled {
-  background: #a0c4f0;
+  background: #f9a0aa;
   cursor: not-allowed;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .signup-link {
-  color: #007bff;
+  color: #F62440;
   font-weight: bold;
   text-decoration: none;
 }

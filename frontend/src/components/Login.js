@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import FormInput from './common/FormInput';
+import { getUser } from '../utils/auth';
 import '../styles/Login.css';
 
 function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [redirectToHome, setRedirectToHome] = useState(false);
+  const [redirectTo, setRedirectTo] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +32,8 @@ function Login() {
 
       if (data.success) {
         localStorage.setItem('token', data.data.token);
-        setRedirectToHome(true);
+        const user = getUser();
+        setRedirectTo(user && user.role === 'admin' ? '/dashboard' : '/member-dashboard');
       } else {
         setError(data.message || 'Login failed. Please try again.');
         setLoading(false);
@@ -42,8 +44,8 @@ function Login() {
     }
   };
 
-  if (redirectToHome) {
-    return <Redirect to="/" />;
+  if (redirectTo) {
+    return <Redirect to={redirectTo} />;
   }
 
   return (

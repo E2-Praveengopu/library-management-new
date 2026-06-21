@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import FormInput from './common/FormInput';
 import RadioGroup from './common/RadioGroup';
+import { getUser } from '../utils/auth';
 import '../styles/Signup.css';
 
 const ROLE_OPTIONS = [
@@ -21,7 +22,7 @@ class Signup extends Component {
       loading: false,
       error: '',
       success: '',
-      redirectToHome: false,
+      redirectTo: null,
     };
   }
 
@@ -46,7 +47,9 @@ class Signup extends Component {
       if (data.success) {
         localStorage.setItem('token', data.data.token);
         this.setState({ success: 'Account created successfully! Redirecting…', loading: false });
-        setTimeout(() => this.setState({ redirectToHome: true }), 1500);
+        const user = getUser();
+        const redirectTo = user && user.role === 'admin' ? '/dashboard' : '/member-dashboard';
+        setTimeout(() => this.setState({ redirectTo }), 1500);
       } else {
         this.setState({ error: data.message || 'Signup failed. Please try again.', loading: false });
       }
@@ -56,10 +59,10 @@ class Signup extends Component {
   };
 
   render() {
-    const { firstName, lastName, email, password, role, loading, error, success, redirectToHome } = this.state;
+    const { firstName, lastName, email, password, role, loading, error, success, redirectTo } = this.state;
 
-    if (redirectToHome) {
-      return <Redirect to="/" />;
+    if (redirectTo) {
+      return <Redirect to={redirectTo} />;
     }
 
     return (

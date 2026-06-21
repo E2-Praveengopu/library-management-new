@@ -1,0 +1,158 @@
+.issue-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+  box-sizing: border-box;
+
+}
+
+.issue-modal {
+  background: #fff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+
+.issue-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.issue-modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.issue-modal-close {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #aaa;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.issue-modal-close:hover {
+  background: #f5f5f5;
+  color: #555;
+}
+
+.issue-loading {
+  padding: 36px 24px;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+}
+
+.issue-form {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.issue-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.issue-label {
+  font-size: 13px;
+  font-weight: bold;
+  color: #444;
+  letter-spacing: 0.2px;
+}
+
+.issue-select,
+.issue-date-input {
+  padding: 10px 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.issue-select:focus,
+.issue-date-input:focus {
+  border-color: #F62440;
+  box-shadow: 0 0 0 3px rgba(246, 36, 64, 0.12);
+}
+
+.issue-none-msg {
+  font-size: 13px;
+  color: #e74c3c;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.issue-error {
+  background: #fff0f0;
+  color: #c0392b;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  border: 1px solid #f5c6cb;
+}
+
+.issue-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+
+.issue-btn-cancel {
+  padding: 10px 22px;
+  background: #f5f5f5;
+  border: 1px solid #dee2e6;
+  color: #555;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.issue-btn-cancel:hover {
+  background: #e8e8e8;
+}
+
+.issue-btn-submit {
+  padding: 10px 24px;
+  background: #F62440;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.issue-btn-submit:hover:not(:disabled) {
+  background: #c9001f;
+}
+
+.issue-btn-submit:disabled {
+  background: #f9a0aa;
+  cursor: not-allowed;
+}

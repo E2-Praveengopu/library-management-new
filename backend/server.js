@@ -1,18 +1,26 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
 import { dbSequelize } from "./config/database.js";
 import authRoutes from "./routes/authRoutes.js";
 import bookRoutes from "./routes/bookRoutes.js";
 import loanRoutes from "./routes/loanRoutes.js";
 import memberRoutes from "./routes/memberRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
+import uploadRoutes from "./routes/uploadRoutes.js";
 import protectedRoutes from "./middleware/protectedRoutes.js";
 dotenv.config();
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Serve uploaded cover images as static files
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const PORT = process.env.PORT || 5000;
 
@@ -30,6 +38,9 @@ app.use("/api/members", memberRoutes);
 
 // Dashboard routes
 app.use("/api/dashboard", dashboardRoutes);
+
+// Upload routes
+app.use("/api/upload", uploadRoutes);
 
 // Protected routes (token required)
 app.get("/api/me", protectedRoutes, (req, res) => {

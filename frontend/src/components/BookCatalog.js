@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { FiChevronLeft } from 'react-icons/fi';
 import { bookApi } from '../services/api';
 import BookCard from './BookCard';
 import BookFormModal from './BookFormModal';
@@ -83,11 +85,14 @@ function BookCatalog() {
   return (
     <div className="catalog-page">
       <div className="catalog-header">
-        <div>
-          <h1 className="catalog-title">Book Catalog</h1>
-          <p className="catalog-subtitle">
-            {totalBooks} {totalBooks === 1 ? 'book' : 'books'} in the library
-          </p>
+        <div className="catalog-header-left">
+          <Link to="/dashboard" className="page-back-btn" title="Back to Dashboard"><FiChevronLeft size={22} /></Link>
+          <div>
+            <h1 className="catalog-title">Book Catalog</h1>
+            <p className="catalog-subtitle">
+              {totalBooks} {totalBooks === 1 ? 'book' : 'books'} in the library
+            </p>
+          </div>
         </div>
         <button className="btn-add-book" onClick={openAdd}>+ Add Book</button>
       </div>

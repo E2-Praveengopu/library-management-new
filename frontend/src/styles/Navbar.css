@@ -1,0 +1,172 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  background: #fff;
+  border-bottom: 1px solid #e8ecf0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.navbar-logo {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.navbar-brand-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: -0.3px;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-link {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  text-decoration: none;
+  border-radius: 7px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav-link:hover {
+  background: #fde8eb;
+  color: #F62440;
+}
+
+.nav-link-active {
+  background: #fde8eb;
+  color: #F62440;
+  font-weight: 600;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Notification bell */
+.notif-bell-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.notif-bell-idle {
+  color: #bbb;
+}
+
+.notif-bell-idle:hover {
+  color: #888;
+}
+
+.notif-bell-active {
+  color: #F62440;
+  animation: bell-ring 0.6s ease-in-out;
+  will-change: transform;
+}
+
+@keyframes bell-ring {
+  0%, 100% { transform: rotate(0); }
+  20%       { transform: rotate(-15deg); }
+  40%       { transform: rotate(15deg); }
+  60%       { transform: rotate(-10deg); }
+  80%       { transform: rotate(10deg); }
+}
+
+.notif-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #F62440;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 17px;
+  height: 17px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  line-height: 1;
+}
+
+.navbar-role-badge {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-transform: capitalize;
+  background: #fde8eb;
+  color: #F62440;
+}
+
+.navbar-email {
+  font-size: 13px;
+  color: #888;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btn-logout {
+  padding: 7px 16px;
+  background: transparent;
+  border: 1px solid #dee2e6;
+  color: #555;
+  border-radius: 7px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  font-weight: 500;
+}
+
+.btn-logout:hover {
+  background: #fff0f2;
+  color: #F62440;
+  border-color: #F62440;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .navbar-email { display: none; }
+  .nav-link { padding: 7px 10px; font-size: 13px; }
+}
+
+@media (max-width: 660px) {
+  .navbar { padding: 0 14px; height: auto; min-height: 58px; flex-wrap: wrap; gap: 6px; padding-top: 8px; padding-bottom: 8px; }
+  .navbar-brand-text { font-size: 16px; }
+  .navbar-links { gap: 2px; order: 3; width: 100%; justify-content: center; padding-bottom: 6px; }
+  .nav-link { padding: 6px 10px; font-size: 12px; }
+  .navbar-right { gap: 8px; }
+  .navbar-role-badge { display: none; }
+  .btn-logout { padding: 6px 12px; font-size: 12px; }
+}
