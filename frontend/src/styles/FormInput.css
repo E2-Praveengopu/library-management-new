@@ -1,0 +1,27 @@
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.form-field-group-full {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 13px;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.form-input {
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}

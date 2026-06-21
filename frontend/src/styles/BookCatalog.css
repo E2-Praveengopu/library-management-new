@@ -1,0 +1,136 @@
+.catalog-page {
+  font-family: Arial, sans-serif;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+.catalog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.catalog-title {
+  font-size: 28px;
+  color: #1a1a2e;
+  margin: 0 0 4px 0;
+}
+
+.catalog-subtitle {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+
+.btn-add-book {
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-add-book:hover {
+  background: #0069d9;
+}
+
+.catalog-error {
+  background: #fff0f0;
+  border: 1px solid #f5c6c6;
+  color: #c0392b;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.catalog-loading {
+  text-align: center;
+  padding: 60px 0;
+  font-size: 16px;
+  color: #888;
+}
+
+.catalog-empty {
+  text-align: center;
+  padding: 80px 0;
+  color: #999;
+}
+
+.catalog-empty p {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.book-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.page-btn {
+  padding: 8px 16px;
+  border: 1px solid #007bff;
+  background: #fff;
+  color: #007bff;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.page-btn:disabled {
+  border-color: #ccc;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.page-btn:not(:disabled):hover {
+  background: #007bff;
+  color: #fff;
+}
+
+.page-num-btn {
+  padding: 8px 12px;
+  border: 1px solid #dee2e6;
+  background: #fff;
+  color: #333;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  min-width: 36px;
+}
+
+.page-num-btn:hover {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.page-num-active {
+  background: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+}
+
+.page-ellipsis {
+  font-size: 14px;
+  color: #999;
+  padding: 0 4px;
+}
