@@ -3,7 +3,7 @@ import { getUser } from '../../utils/auth';
 import { addReservation } from '../../utils/reservations';
 import '../../styles/MemberBookDetailModal.css';
 
-const PLACEHOLDER = 'https://placehold.co/300x400/eef2f7/888888?text=No+Cover';
+import placeholderImage from '../../assets/imagePlaceholer.png';
 
 function BookDetailModal({ book, genreColor, onClose }) {
   const [reserveState, setReserveState] = useState('idle'); // idle | success | duplicate
@@ -31,10 +31,10 @@ function BookDetailModal({ book, genreColor, onClose }) {
         <div className="detail-content">
           <div className="detail-cover-col">
             <img
-              src={coverImageUrl || PLACEHOLDER}
+              src={coverImageUrl || placeholderImage}
               alt={title}
               className="detail-cover-img"
-              onError={(e) => { e.target.src = PLACEHOLDER; }}
+              onError={(e) => { e.target.src = placeholderImage; }}
             />
           </div>
 

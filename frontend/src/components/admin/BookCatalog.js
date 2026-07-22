@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronLeft } from 'react-icons/fi';
-import { bookApi } from '../services/api';
+import { bookApi } from '../../services/api';
 import BookCard from './BookCard';
 import BookFormModal from './BookFormModal';
-import '../styles/BookCatalog.css';
+import '../../styles/BookCatalog.css';
 
 function BookCatalog() {
   const [books, setBooks] = useState([]);

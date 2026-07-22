@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronLeft } from 'react-icons/fi';
-import { loanApi } from '../services/api';
+import { loanApi } from '../../services/api';
 import IssueLoanModal from './IssueLoanModal';
-import '../styles/LoanManagement.css';
+import '../../styles/LoanManagement.css';
 
 const TABS = [
   { key: 'all',      label: 'All Loans' },

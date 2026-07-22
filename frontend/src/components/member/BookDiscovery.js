@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronLeft } from 'react-icons/fi';
-import { bookApi } from '../services/api';
-import DiscoveryBookCard from './member/DiscoveryBookCard';
-import BookDetailModal from './member/BookDetailModal';
-import BookSkeleton from './member/BookSkeleton';
-import '../styles/BookDiscovery.css';
+import { bookApi } from '../../services/api';
+import DiscoveryBookCard from './DiscoveryBookCard';
+import BookDetailModal from './BookDetailModal';
+import BookSkeleton from './BookSkeleton';
+import '../../styles/BookDiscovery.css';
 
 const GENRE_COLORS = [
   { bg: '#e8f4fd', text: '#1565c0', border: '#90caf9' },

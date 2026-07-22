@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import FormInput from './common/FormInput';
-import { uploadApi } from '../services/api';
-import '../styles/BookFormModal.css';
+import FormInput from '../common/FormInput';
+import { uploadApi } from '../../services/api';
+import '../../styles/BookFormModal.css';
 
 const EMPTY_FORM = {
   title: '',

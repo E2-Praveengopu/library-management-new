@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronLeft, FiBell } from 'react-icons/fi';
-import { dashboardApi } from '../services/api';
-import { getUser } from '../utils/auth';
-import { getPendingReservations, dismissReservation } from '../utils/reservations';
-import '../styles/AdminDashboard.css';
+import { dashboardApi } from '../../services/api';
+import { getUser } from '../../utils/auth';
+import { getPendingReservations, dismissReservation } from '../../utils/reservations';
+import '../../styles/AdminDashboard.css';
 
-const PLACEHOLDER = 'https://placehold.co/56x76/eef2f7/888888?text=Book';
+
+
+import placeholderImage from '../../assets/imagePlaceholer.png';
 
 function formatDate(dateStr) {
   if (!dateStr) return '—';
@@ -80,7 +82,6 @@ function AdminDashboard() {
   return (
     <div className="admin-dash-page">
 
-      {/* Page header */}
       <div className="admin-dash-header">
         <div className="admin-dash-header-left">
           <button className="admin-dash-back-btn" onClick={handleLogout} title="Logout">
@@ -95,10 +96,10 @@ function AdminDashboard() {
           <Link to="/members" className="ql-btn ql-primary">Manage Members</Link>
           <Link to="/loans"   className="ql-btn ql-outline">View Loans</Link>
           <Link to="/"        className="ql-btn ql-outline">Book Catalog</Link>
+          <button className="ql-btn ql-logout" onClick={handleLogout}>Logout</button>
         </div>
       </div>
 
-      {/* Reservation notifications banner */}
       {reservations.length > 0 && (
         <div className="res-banner">
           <div className="res-banner-header">
@@ -158,10 +159,10 @@ function AdminDashboard() {
               {recentBooks.map((book) => (
                 <div key={book.id} className="rb-row">
                   <img
-                    src={book.coverImageUrl || PLACEHOLDER}
+                    src={book.coverImageUrl || placeholderImage}
                     alt={book.title}
                     className="rb-cover"
-                    onError={(e) => { e.target.src = PLACEHOLDER; }}
+                    onError={(e) => { e.target.src = placeholderImage; }}
                   />
                   <div className="rb-info">
                     <div className="rb-title">{book.title}</div>

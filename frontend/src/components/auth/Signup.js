@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
-import FormInput from './common/FormInput';
-import RadioGroup from './common/RadioGroup';
-import { getUser } from '../utils/auth';
-import '../styles/Signup.css';
+import FormInput from '../common/FormInput';
+import RadioGroup from '../common/RadioGroup';
+import { getUser } from '../../utils/auth';
+import '../../styles/Signup.css';
 
 const ROLE_OPTIONS = [
   { value: 'member', label: 'Member', description: 'Browse, borrow and manage your books' },

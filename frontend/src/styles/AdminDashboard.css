@@ -102,6 +102,18 @@
   border-color: #F62440;
 }
 
+.ql-logout {
+  background: #fff;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+}
+
+.ql-logout:hover {
+  background: #e74c3c;
+  color: #fff;
+  border-color: #e74c3c;
+}
+
 /* ── Reservations notification banner ── */
 .res-banner {
   background: #fff;

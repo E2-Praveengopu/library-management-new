@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/DiscoveryBookCard.css';
 
-const PLACEHOLDER = 'https://placehold.co/300x400/eef2f7/888888?text=No+Cover';
+import placeholderImage from '../../assets/imagePlaceholer.png';
 
 function DiscoveryBookCard({ book, viewMode, genreColor, onSelect }) {
   const { title, author, isbn, genre, availableCopies, totalCopies, coverImageUrl } = book;
@@ -16,10 +16,10 @@ function DiscoveryBookCard({ book, viewMode, genreColor, onSelect }) {
       <div className="discovery-list-card" onClick={onSelect}>
         <div className="list-card-cover">
           <img
-            src={coverImageUrl || PLACEHOLDER}
+            src={coverImageUrl || placeholderImage}
             alt={title}
             className="list-card-img"
-            onError={(e) => { e.target.src = PLACEHOLDER; }}
+            onError={(e) => { e.target.src = placeholderImage; }}
           />
         </div>
 
@@ -56,10 +56,10 @@ function DiscoveryBookCard({ book, viewMode, genreColor, onSelect }) {
     <div className="discovery-grid-card" onClick={onSelect}>
       <div className="grid-card-cover">
         <img
-          src={coverImageUrl || PLACEHOLDER}
+          src={coverImageUrl || placeholderImage}
           alt={title}
           className="grid-card-img"
-          onError={(e) => { e.target.src = PLACEHOLDER; }}
+          onError={(e) => { e.target.src = placeholderImage; }}
         />
         <div className="grid-card-overlay">
           <button className="btn-view-details">View Details</button>

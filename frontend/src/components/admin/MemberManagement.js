@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronLeft } from 'react-icons/fi';
-import { memberApi } from '../services/api';
-import '../styles/MemberManagement.css';
+import { memberApi } from '../../services/api';
+import '../../styles/MemberManagement.css';
 
-const PLACEHOLDER = 'https://placehold.co/56x76/eef2f7/888888?text=Book';
+import placeholderImage from '../../assets/imagePlaceholer.png';
 
 function formatDate(dateStr) {
   if (!dateStr) return '—';
@@ -87,10 +87,10 @@ function MemberLoansModal({ member, onClose }) {
               {loans.map((loan) => (
                 <div key={loan.id} className={`ml-row ${loan.isOverdue ? 'ml-row-overdue' : ''}`}>
                   <img
-                    src={loan.book?.coverImageUrl || PLACEHOLDER}
+                    src={loan.book?.coverImageUrl || placeholderImage}
                     alt={loan.book?.title}
                     className="ml-cover"
-                    onError={(e) => { e.target.src = PLACEHOLDER; }}
+                    onError={(e) => { e.target.src = placeholderImage; }}
                   />
                   <div className="ml-book-info">
                     <div className="ml-book-title">{loan.book?.title}</div>

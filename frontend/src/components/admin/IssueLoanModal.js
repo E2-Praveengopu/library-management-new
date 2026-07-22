@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { bookApi, memberApi, loanApi } from '../services/api';
-import '../styles/IssueLoanModal.css';
+import { bookApi, memberApi, loanApi } from '../../services/api';
+import '../../styles/IssueLoanModal.css';
 
 function IssueLoanModal({ onSuccess, onClose }) {
   const [books, setBooks] = useState([]);

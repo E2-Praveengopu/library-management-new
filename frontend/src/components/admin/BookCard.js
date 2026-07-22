@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles/BookCard.css';
+import '../../styles/BookCard.css';
 
-const PLACEHOLDER = 'https://placehold.co/300x400/eef2f7/888888?text=No+Cover';
+import placeholderImage from '../../assets/imagePlaceholer.png';
 
 function BookCard({ book, onEdit, onDelete }) {
   const { title, author, isbn, genre, totalCopies, availableCopies, coverImageUrl } = book;
@@ -11,10 +11,10 @@ function BookCard({ book, onEdit, onDelete }) {
     <div className="book-card">
       <div className="book-cover">
         <img
-          src={coverImageUrl || PLACEHOLDER}
+          src={coverImageUrl || placeholderImage}
           alt={title}
           className="book-cover-img"
-          onError={(e) => { e.target.src = PLACEHOLDER; }}
+          onError={(e) => { e.target.src = placeholderImage; }}
         />
       </div>
 

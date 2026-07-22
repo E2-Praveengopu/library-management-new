@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FiBell } from 'react-icons/fi';
-import { getUser } from '../utils/auth';
-import { getPendingReservations } from '../utils/reservations';
-import '../styles/Navbar.css';
+import { getUser } from '../../utils/auth';
+import { getPendingReservations } from '../../utils/reservations';
+import '../../styles/Navbar.css';
 
 function Navbar() {
   const user = getUser();

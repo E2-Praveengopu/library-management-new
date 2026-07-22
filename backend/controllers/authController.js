@@ -89,16 +89,14 @@ export const login = async (req, res) => {
   if (isMatch) {
     const token = generateToken(user);
     return res.status(200).json({
-      success: "true",
+      success: true,
       message: "User logged in successfully",
-      data:{
-        token
-      }
+      data: { token },
     });
   } else {
     return res.status(401).json({
-      success: "false",
-      message: "email and password didn't match",
+      success: false,
+      message: "Email and password didn't match.",
     });
   }
 };

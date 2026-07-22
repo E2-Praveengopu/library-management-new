@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { dashboardApi } from '../services/api';
-import { getUser } from '../utils/auth';
-import '../styles/MemberDashboard.css';
+import { dashboardApi } from '../../services/api';
+import { getUser } from '../../utils/auth';
+import '../../styles/MemberDashboard.css';
 
-const PLACEHOLDER = 'https://placehold.co/64x88/eef2f7/888888?text=Book';
+import placeholderImage from '../../assets/imagePlaceholer.png';
 
 function formatDate(dateStr) {
   if (!dateStr) return '—';
@@ -113,10 +113,10 @@ function MemberDashboard() {
               <div key={loan.id} className={`dash-loan-card ${loan.isOverdue ? 'dlc-overdue' : ''}`}>
                 <div className="dlc-cover-wrap">
                   <img
-                    src={loan.book?.coverImageUrl || PLACEHOLDER}
+                    src={loan.book?.coverImageUrl || placeholderImage}
                     alt={loan.book?.title}
                     className="dlc-cover"
-                    onError={(e) => { e.target.src = PLACEHOLDER; }}
+                    onError={(e) => { e.target.src = placeholderImage; }}
                   />
                   {loan.isOverdue && <div className="dlc-overdue-ribbon">Overdue</div>}
                 </div>
@@ -153,10 +153,10 @@ function MemberDashboard() {
             {history.map((loan) => (
               <div key={loan.id} className="dash-history-row">
                 <img
-                  src={loan.book?.coverImageUrl || PLACEHOLDER}
+                  src={loan.book?.coverImageUrl || placeholderImage}
                   alt={loan.book?.title}
                   className="dhr-cover"
-                  onError={(e) => { e.target.src = PLACEHOLDER; }}
+                  onError={(e) => { e.target.src = placeholderImage; }}
                 />
                 <div className="dhr-info">
                   <div className="dhr-title">{loan.book?.title}</div>

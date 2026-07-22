@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { loanApi } from '../services/api';
-import '../styles/MyLoans.css';
+import { loanApi } from '../../services/api';
+import '../../styles/MyLoans.css';
 
-const PLACEHOLDER = 'https://placehold.co/64x88/eef2f7/888888?text=Book';
+import placeholderImage from '../../assets/imagePlaceholer.png';
 
 function formatDate(dateStr) {
   if (!dateStr) return '—';
@@ -17,10 +17,10 @@ function LoanCard({ loan, showReturnDate }) {
     <div className={`my-loan-card ${isOverdue ? 'loan-card-overdue' : ''}`}>
       <div className="loan-card-cover-wrap">
         <img
-          src={book?.coverImageUrl || PLACEHOLDER}
+          src={book?.coverImageUrl || placeholderImage}
           alt={book?.title}
           className="loan-card-cover"
-          onError={(e) => { e.target.src = PLACEHOLDER; }}
+          onError={(e) => { e.target.src = placeholderImage; }}
         />
       </div>
 
@@ -147,7 +147,6 @@ function MyLoans() {
         )}
       </section>
 
-      {/* History */}
       <section className="loans-section">
         <div className="loans-section-header">
           <h2 className="loans-section-title">Borrowing History</h2>

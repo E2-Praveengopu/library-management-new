@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Redirect, Link } from 'react-router-dom';
-import FormInput from './common/FormInput';
-import { getUser } from '../utils/auth';
-import '../styles/Login.css';
+import FormInput from '../common/FormInput';
+import { getUser } from '../../utils/auth';
+import '../../styles/Login.css';
 
 function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -28,17 +28,22 @@ function Login() {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      let data = null;
+      try {
+        data = await response.json();
+      } catch {
+        // response body was not JSON
+      }
 
-      if (data.success) {
+      if (data && data.success === true) {
         localStorage.setItem('token', data.data.token);
         const user = getUser();
         setRedirectTo(user && user.role === 'admin' ? '/dashboard' : '/member-dashboard');
       } else {
-        setError(data.message || 'Login failed. Please try again.');
+        setError((data && data.message) || 'Invalid email or password.');
         setLoading(false);
       }
-    } catch (err) {
+    } catch {
       setError('Cannot connect to server. Make sure the backend is running.');
       setLoading(false);
     }
